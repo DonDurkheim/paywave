@@ -452,7 +452,7 @@ async function startup() {
 
     // Start HTTP server
     server.listen(PORT, '0.0.0.0', () => {
-      console.log(`\n✓ Server running on http://localhost:${PORT}`);
+      console.log(`\n✓ Server running on http://157.173.101.159:${PORT}`);
       console.log(`✓ Team ID: ${TEAM_ID}`);
       console.log(`✓ MQTT Broker: ${MQTT_BROKER}\n`);
     });

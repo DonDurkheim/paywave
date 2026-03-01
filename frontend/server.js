@@ -6,7 +6,7 @@ const path = require('path');
 const { createProxyMiddleware } = require('http-proxy-middleware');
 
 const PORT = process.env.PORT || 9212;
-const BACKEND_URL = process.env.BACKEND_URL || 'http://localhost:8212';
+const BACKEND_URL = process.env.BACKEND_URL || 'http://157.173.101.159:8212';
 
 const app = express();
 const server = http.createServer(app);
@@ -104,6 +104,6 @@ io.on('connection', (socket) => {
 });
 
 server.listen(PORT, '0.0.0.0', () => {
-  console.log(`Frontend server running on http://localhost:${PORT}`);
+  console.log(`Frontend server running on http://157.173.101.159:${PORT}`);
   console.log(`Backend proxy: ${BACKEND_URL}`);
 });

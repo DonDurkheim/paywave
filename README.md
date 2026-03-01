@@ -2,8 +2,8 @@
 
 ## Ports
 
-- **Backend**: http://localhost:8212
-- **Frontend**: http://localhost:9212
+- **Backend**: http://157.173.101.159:8212
+- **Frontend**: http://157.173.101.159:9212
 
 ## Setup
 
