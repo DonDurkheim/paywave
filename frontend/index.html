@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PayWave | RFID Wallet Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1>Pay<span>Wave</span></h1>
+      <p>RFID Wallet Management System</p>
+      
+      <div class="role-selector">
+        <button id="role-admin" class="role-btn active">
+          <span>👤</span> Admin
+        </button>
+        <button id="role-cashier" class="role-btn">
+          <span>💳</span> Cashier
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <!-- CARD STATUS (SHARED) -->
+      <section class="glass-card card-status">
+        <h2><span>🎴</span> Card Status</h2>
+        
+        <div class="card-visual-container">
+          <div id="card-visual" class="card-visual">
+            <div class="card-chip"></div>
+            <div class="card-number">•••• •••• •••• ••••</div>
+            <div class="card-details">
+              <div class="card-holder-group">
+                <span class="card-label">CARD ID</span>
+                <span id="card-uid-display" class="card-value">--</span>
+              </div>
+              <div class="card-balance-group">
+                <span class="card-label">CREDIT</span>
+                <span id="card-balance-display" class="card-value">$0.00</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="status-display" class="status-content">
+          <div class="status-placeholder">Please scan an RFID card to begin...</div>
+        </div>
+      </section>
+
+      <!-- ADMIN INTERFACE -->
+      <section id="admin-panel" class="glass-card admin-interface">
+        <h2><span>➕</span> Top-Up Card</h2>
+        <div class="form-group">
+          <label for="admin-uid">Card UID</label>
+          <input type="text" id="admin-uid" placeholder="Waiting for scan..." readonly>
+        </div>
+        <div class="form-group">
+          <label for="admin-current-balance">Current Balance</label>
+          <input type="text" id="admin-current-balance" placeholder="$0.00" readonly>
+        </div>
+        <div class="form-group">
+          <label for="admin-amount">Top-Up Amount ($)</label>
+          <input type="number" id="admin-amount" placeholder="0.00" step="0.01" min="0">
+        </div>
+        <button id="admin-topup-btn" class="btn-primary" disabled>
+          Confirm Transaction
+        </button>
+        <div id="admin-response" class="response-message"></div>
+      </section>
+
+      <!-- CASHIER INTERFACE -->
+      <section id="cashier-panel" class="glass-card cashier-interface" style="display: none;">
+        <h2><span>💰</span> Process Payment</h2>
+        <div class="form-group">
+          <label for="cashier-uid">Card UID</label>
+          <input type="text" id="cashier-uid" placeholder="Waiting for scan..." readonly>
+        </div>
+        <div class="form-group">
+          <label for="cashier-current-balance">Current Balance</label>
+          <input type="text" id="cashier-current-balance" placeholder="$0.00" readonly>
+        </div>
+        <div class="form-group">
+          <label for="cashier-product">Product / Service</label>
+          <select id="cashier-product">
+            <option value="">-- Select Product --</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="cashier-quantity">Quantity</label>
+          <input type="number" id="cashier-quantity" placeholder="1" value="1" min="1">
+        </div>
+        <div class="form-group">
+          <label for="cashier-total-cost">Total Cost</label>
+          <input type="text" id="cashier-total-cost" placeholder="$0.00" readonly>
+        </div>
+        <button id="cashier-pay-btn" class="btn-primary" disabled>
+          Authorize Payment
+        </button>
+        <div id="cashier-response" class="response-message"></div>
+      </section>
+    </main>
+
+    <!-- ACTIVITY LOG -->
+    <section class="activity-log">
+      <h3><span>📋</span> Transaction Log</h3>
+      <ul id="log-list" class="log-list"></ul>
+    </section>
+
+    <footer>
+      <p>System: <strong>PayWave</strong> | WebSocket Status: <span id="connection-status" class="status-online">● Online</span></p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>

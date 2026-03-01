@@ -1,0 +1,29 @@
+// ==========================================
+// PayWave Firmware Configuration
+// ==========================================
+// IMPORTANT: Update these values with your own credentials
+// Do NOT commit this file to version control with real credentials
+
+#ifndef CONFIG_H
+#define CONFIG_H
+
+// ==========================================
+// WiFi CONFIGURATION
+// ==========================================
+#define WIFI_SSID "Your_WiFi_SSID"
+#define WIFI_PASSWORD "Your_WiFi_Password"
+#define WIFI_TIMEOUT_MS 30000
+
+// ==========================================
+// MQTT CONFIGURATION
+// ==========================================
+#define MQTT_SERVER "broker.benax.rw"  // Or your own MQTT broker IP
+#define MQTT_PORT 1883
+#define TEAM_ID "paywave"  // Unique identifier for your system
+
+// ==========================================
+// DEVICE CONFIGURATION
+// ==========================================
+#define DEVICE_NAME "PayWave-ESP8266"
+
+#endif // CONFIG_H
