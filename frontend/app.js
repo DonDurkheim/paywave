@@ -1,8 +1,7 @@
 // ========================================
 // WEBSOCKET & STATE
 // ========================================
-const BACKEND_URL = `${location.protocol}//${location.hostname}:${location.port}`;
-const socket = io(BACKEND_URL);
+const socket = io();
 
 // Global state
 let currentRole = 'admin'; // 'admin' or 'cashier'
@@ -234,7 +233,7 @@ adminTopupBtn.addEventListener('click', async () => {
     adminTopupBtn.textContent = 'Processing...';
 
     try {
-        const response = await fetch(`${BACKEND_URL}/topup`, {
+        const response = await fetch(`/api/topup`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ uid: lastScannedUid, amount })
@@ -309,7 +308,7 @@ cashierPayBtn.addEventListener('click', async () => {
     cashierPayBtn.textContent = 'Authorizing...';
 
     try {
-        const response = await fetch(`${BACKEND_URL}/pay`, {
+        const response = await fetch(`/api/pay`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ uid: lastScannedUid, productId, quantity, totalAmount })

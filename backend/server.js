@@ -27,7 +27,7 @@ app.use(express.json());
 // ========================================
 // CONFIGURATION
 // ========================================
-const PORT = process.env.PORT || 9264;
+const PORT = process.env.PORT || 8212;
 const TEAM_ID = "paywave";
 const MQTT_BROKER = process.env.MQTT_BROKER || "mqtt://157.173.101.159:1883";
 
